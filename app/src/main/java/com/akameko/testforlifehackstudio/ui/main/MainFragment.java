@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.akameko.testforlifehackstudio.MainActivity;
 import com.akameko.testforlifehackstudio.R;
 import com.akameko.testforlifehackstudio.repository.CompanyListItem;
 
@@ -42,7 +43,7 @@ public class MainFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         //sharedViewModel = ViewModelProviders.of(this).get(SharedViewModel.class);
-        sharedViewModel = new ViewModelProvider(this).get(SharedViewModel.class);
+        sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
         sharedViewModel.getCompanies().observe(getViewLifecycleOwner(), companies -> {
 
             for (CompanyListItem c : companies) {
@@ -66,6 +67,7 @@ public class MainFragment extends Fragment {
         mainAdapter.setOnItemClickListener((view, position) -> {
             Toast.makeText(getContext(), String.format("Позиция - %d", position), Toast.LENGTH_SHORT).show();
             sharedViewModel.select(position + 1);
+            ((MainActivity)getActivity()).showDetailsFragment();
         });
 
         recyclerView.setAdapter(mainAdapter);

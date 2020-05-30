@@ -1,7 +1,6 @@
 package com.akameko.testforlifehackstudio.ui.main;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -11,7 +10,6 @@ import com.akameko.testforlifehackstudio.repository.CompanyDetailItem;
 import com.akameko.testforlifehackstudio.repository.CompanyListItem;
 import com.akameko.testforlifehackstudio.repository.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -21,10 +19,10 @@ import io.reactivex.schedulers.Schedulers;
 
 public class SharedViewModel extends ViewModel {
     private Repository repository = new Repository();
-    CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
     private MutableLiveData<List<CompanyListItem>> companyListLiveData;
     private int select = 1;
-    private MutableLiveData<List<CompanyDetailItem>> selected = new MutableLiveData<>();
+    private MutableLiveData<List<CompanyDetailItem>> details = new MutableLiveData<>();
 
 
     public LiveData<List<CompanyListItem>> getCompanies() {
@@ -37,9 +35,7 @@ public class SharedViewModel extends ViewModel {
     }
 
     private void loadCompanies() {
-
-        // Do an asynchronous operation to fetch users.
-        ArrayList<CompanyListItem> companiesList = new ArrayList<>();
+       // ArrayList<CompanyListItem> companiesList = new ArrayList<>();
 
         Disposable disposable = repository.loadCompanies()
                 .subscribeOn(Schedulers.io())
@@ -47,11 +43,11 @@ public class SharedViewModel extends ViewModel {
                 .subscribe(companyListItems -> {
                     companyListLiveData.setValue(companyListItems);
 
-                    Log.d("123", "loaded!!");
+                    Log.d("123", "Companies loaded!!");
 
 
                 }, throwable -> {
-                    Log.d("123", "123",throwable);
+                    Log.d("123", "Companies loading failed", throwable);
                     //Toast.makeText(this,"load error", Toast.LENGTH_SHORT).show();
                 });
         compositeDisposable.add(disposable);
@@ -65,11 +61,29 @@ public class SharedViewModel extends ViewModel {
     }
 
     private void loadDetails() {
-        // Do an asynchronous operation to fetch users.
+
+
+        Disposable disposable = repository.loadCompaniesDetails(String.valueOf(select))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(companyDetailItems -> {
+                    details.setValue(companyDetailItems);
+                    Log.d("123", "Details loaded!!");
+//                    for (CompanyDetailItem c : companyDetailItems) {
+//                        Log.d("", c.toString());}
+                }, throwable -> {
+                    Log.d("123", "Details loading failed", throwable);
+                });
+        compositeDisposable.add(disposable);
+
+
     }
 
-    public LiveData<List<CompanyDetailItem>> getSelected() {
-        return selected;
+    public LiveData<List<CompanyDetailItem>> getDetails() {
+//        if (details == null){
+//
+//        }
+        return details;
     }
 
     @Override

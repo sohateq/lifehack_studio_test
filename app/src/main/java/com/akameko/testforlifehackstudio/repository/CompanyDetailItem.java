@@ -71,4 +71,18 @@ public class CompanyDetailItem {
     public String getPhone() {
         return phone;
     }
+
+    @Override
+    public String toString() {
+        return "CompanyDetailItem{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", img='" + img + '\'' +
+                ", description='" + description + '\'' +
+                ", lat='" + lat + '\'' +
+                ", lon='" + lon + '\'' +
+                ", www='" + www + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
 }

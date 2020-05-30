@@ -1,6 +1,8 @@
 package com.akameko.testforlifehackstudio;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.widget.Toast;
 
 import com.akameko.testforlifehackstudio.repository.CompanyListItem;
 import com.akameko.testforlifehackstudio.repository.Repository;
+import com.akameko.testforlifehackstudio.ui.main.DetailFragment;
 import com.akameko.testforlifehackstudio.ui.main.MainFragment;
 import com.akameko.testforlifehackstudio.ui.main.SharedViewModel;
 
@@ -43,6 +46,16 @@ public class MainActivity extends AppCompatActivity {
 //                Log.d("", c.toString());}
 //        });
 
+    }
+
+    public void showDetailsFragment(){
+        DetailFragment detailFragment = new DetailFragment();
+        FragmentManager fm = getSupportFragmentManager();
+        fm.beginTransaction()
+                .replace(R.id.container,detailFragment)
+                .addToBackStack("")
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .commit();
     }
 
     @Override

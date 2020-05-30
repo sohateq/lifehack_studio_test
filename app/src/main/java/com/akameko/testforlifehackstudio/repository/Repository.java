@@ -20,12 +20,6 @@ public class Repository {
 
     private Retrofit retrofit;
     private Api api;
-//    CompositeDisposable compositeDisposable = new CompositeDisposable();
-//
-//    private List<CompanyListItem> companyListItemList;
-//    private List<CompanyDetailItem> companyDetailItemList;
-
-
 
     public Repository() {
         retrofit = new Retrofit.Builder()
