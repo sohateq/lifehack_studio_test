@@ -17,13 +17,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class Repository {
-    //TODO: singleton
+
     private Retrofit retrofit;
     private Api api;
-    CompositeDisposable compositeDisposable = new CompositeDisposable();
+//    CompositeDisposable compositeDisposable = new CompositeDisposable();
+//
+//    private List<CompanyListItem> companyListItemList;
+//    private List<CompanyDetailItem> companyDetailItemList;
 
-    private List<CompanyListItem> companyListItemList;
-    private List<CompanyDetailItem> companyDetailItemList;
 
 
     public Repository() {
