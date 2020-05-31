@@ -28,9 +28,10 @@
             android:layout_marginStart="16dp"
 
             android:layout_marginTop="24dp"
-            android:text="Компания"
-            android:textSize="18sp"
+            android:text="@string/text_company"
 
+
+            android:textSize="24sp"
             app:layout_constraintStart_toEndOf="@id/imageView"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,12 +40,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:text="Подробнее"
-            android:textSize="16sp"
+            android:text="@string/more"
+            android:textColor="@color/colorAccent"
 
+            android:textSize="18sp "
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/imageView"
             app:layout_constraintTop_toBottomOf="@+id/text_view_company_name" />
