@@ -65,7 +65,7 @@ public class MainFragment extends Fragment {
 
         final MainAdapter mainAdapter = new MainAdapter(companyListItem);
         mainAdapter.setOnItemClickListener((view, position) -> {
-            Toast.makeText(getContext(), String.format("Позиция - %d", position), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(), String.format("Позиция - %d", position), Toast.LENGTH_SHORT).show();
             sharedViewModel.select(position + 1);
             ((MainActivity)getActivity()).showDetailsFragment();
         });
