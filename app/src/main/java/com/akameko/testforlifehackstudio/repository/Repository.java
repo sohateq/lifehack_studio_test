@@ -41,37 +41,6 @@ public class Repository {
 
 
 
-//    public List<CompanyListItem> loadCompanies() {
-//
-//        Disposable disposable = api.loadCompanyListItems()
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(companyListItems -> {
-//                    companyListItemList = companyListItems;
-//                }, throwable -> {
-//                    // handle error event
-//                });
-//        compositeDisposable.add(disposable);
-//        return companyListItemList;
-//    }
 
-
-//    public List<CompanyDetailItem> loadCompaniesDetails(String id) {
-//
-//        Disposable disposable = api.loadCompanyDetailItems(id)
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(companyDetailItems -> {
-//                    companyDetailItemList = companyDetailItems;
-//                }, throwable -> {
-//                    // handle error event
-//                });
-//        compositeDisposable.add(disposable);
-//        return companyDetailItemList;
-//    }
-
-//    public void activityDestroyed() {
-//        compositeDisposable.dispose();
-//    }
 
 }
